@@ -16,17 +16,21 @@ public class AuthService {
 
     public void signUpService(String email, String password, View view) {
         if (email.isEmpty() && password.isEmpty()) {
-            Toast.makeText(view.getContext(), "enter email and password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "enter you email and password", Toast.LENGTH_SHORT).show();
         } else {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Intent intent = new Intent(view.getContext(), Dashboard.class);
+                                Intent intent = new Intent(
+                                        view.getContext(), Dashboard.class
+                                );
                                 view.getContext().startActivity(intent);
                             } else {
-                                Toast.makeText(view.getContext(), "error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(
+                                        view.getContext(), "error", Toast.LENGTH_SHORT
+                                ).show();
                             }
                         }
                     });
@@ -35,7 +39,7 @@ public class AuthService {
 
     public void signInService(String email, String password, View view) {
         if (email.isEmpty() && password.isEmpty()) {
-            Toast.makeText(view.getContext(), "enter email and password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "enter your email and password", Toast.LENGTH_SHORT).show();
         } else {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -46,7 +50,9 @@ public class AuthService {
                                         new Intent(view.getContext(), Dashboard.class)
                                 );
                             } else {
-                                Toast.makeText(view.getContext(), "error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(
+                                        view.getContext(), "error", Toast.LENGTH_SHORT
+                                ).show();
                             }
                         }
                     });
