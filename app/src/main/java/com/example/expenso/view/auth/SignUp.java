@@ -10,15 +10,15 @@ import com.example.expenso.R;
 import com.example.expenso.util.AuthService;
 
 public class SignUp extends AppCompatActivity {
-    EditText regEmail, regPassword;
-    Button btnSignUp;
+    EditText regEmail,  regPassword;
+    Button  btnSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        //init widget
+        //init widget for signUp Activity
         regEmail = findViewById(R.id.regEmail);
         regPassword = findViewById(R.id.regPassword);
         btnSignUp = findViewById(R.id.btnSignUp);
@@ -28,7 +28,9 @@ public class SignUp extends AppCompatActivity {
             String email = regEmail.getText().toString();
             String password = regPassword.getText().toString();
 
-            new AuthService().signUpService(email, password, v);
+            new AuthService().signUpService(
+                    email, password, v
+            );
         });
     }
 }

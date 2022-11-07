@@ -31,15 +31,22 @@ public class SignIn extends AppCompatActivity {
 
         // Handle Click Event
         txt_newUser.setOnClickListener(v -> {
-            startActivity(new Intent(this, SignUp.class));
+            startActivity(
+                    new Intent(
+                            this, SignUp.class
+                    )
+            );
         });
 
 
-        btnSignIn.setOnClickListener(v -> {
+        btnSignIn.setOnClickListener(
+                v -> {
             String email = logEmail.getText().toString();
             String password = logPassword.getText().toString();
 
-            new AuthService().signInService(email, password, v);
+            new AuthService().signInService(
+                    email, password, v
+            );
         });
     }
 }

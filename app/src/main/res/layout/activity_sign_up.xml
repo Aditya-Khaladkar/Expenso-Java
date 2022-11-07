@@ -8,10 +8,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
+        android:layout_height="match_parent"
         android:paddingTop="20dp">
 
         <LinearLayout
@@ -27,7 +24,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:text="Here’s\nyour first\nstep with \nus! "
                     android:textColor="@color/black"
@@ -43,7 +39,6 @@
             </RelativeLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
@@ -58,7 +53,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
@@ -79,7 +73,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="#0099ff"
-                android:text="sign up"
+                android:text="SIGN UP"
                 app:cornerRadius="9dp" />
 
         </LinearLayout>
