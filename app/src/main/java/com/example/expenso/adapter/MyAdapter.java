@@ -20,7 +20,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     List<ExpenseModel> myExpenseList;
 
-    public MyAdapter(List<ExpenseModel>  myExpenseList) {
+    public MyAdapter(List<ExpenseModel> myExpenseList) {
         this.myExpenseList = myExpenseList;
     }
 
@@ -35,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final ExpenseModel myExpense = myExpenseList.get(position);
         holder.txt_expense_name.setText(myExpense.getName());
-        holder.txt_expense_price.setText("Rs: " + String.valueOf(myExpense.getPrice())+" /-");
+        holder.txt_expense_price.setText("Rs: " + String.valueOf(myExpense.getPrice()));
         holder.txt_expense_date.setText(myExpense.getDate());
         holder.expense_card.setOnClickListener(view -> {
             Intent intent = new Intent(holder.expense_card.getContext(), ExpenseDetails.class);
@@ -54,9 +54,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_expense_name,
-                txt_expense_price,
-                txt_expense_date;
+        TextView txt_expense_name, txt_expense_price, txt_expense_date;
         CardView expense_card;
 
         public MyViewHolder(@NonNull View itemView) {

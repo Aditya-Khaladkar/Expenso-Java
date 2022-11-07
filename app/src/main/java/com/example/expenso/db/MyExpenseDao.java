@@ -11,12 +11,12 @@ import java.util.List;
 @Dao
 public interface MyExpenseDao {
 
-    @Query("SELECT * FROM my_expense")
+    @Query("select * from my_expense")
     List<ExpenseModel> getAllExpense();
 
     @Insert
     void insertExpense(ExpenseModel myExpense);
 
-    @Query("SELECT sum(price) FROM my_expense")
+    @Query("select sum(price) from my_expense")
     int getAllPrice();
 }
