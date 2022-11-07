@@ -10,9 +10,7 @@ import com.example.expenso.db.MyExpenseDb;
 public class DatabaseService {
     public MyExpenseDb initDb(Context context) {
         return Room
-                .databaseBuilder(
-                        context, MyExpenseDb.class, "expenseDb"
-                )
+                .databaseBuilder(context, MyExpenseDb.class, "expenseDb")
                 .build();
     }
 }

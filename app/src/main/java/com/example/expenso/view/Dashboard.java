@@ -33,21 +33,29 @@ public class Dashboard extends AppCompatActivity {
         final MyExpenseDao myExpenseDao = myExpenseDb.myExpenseDao();
 
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(
+                new LinearLayoutManager(this)
+        );
         recyclerView.setHasFixedSize(true);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 final List<ExpenseModel> myExpenseList = myExpenseDao.getAllExpense();
-                adapter = new MyAdapter(myExpenseList);
-                recyclerView.setAdapter(adapter);
+                adapter = new MyAdapter(
+                        myExpenseList
+                );
+                recyclerView.setAdapter(
+                        adapter
+                );
 
             }
         }).start();
 
         findViewById(R.id.btn_add).setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(), AddExpense.class));
+            startActivity(
+                    new Intent(getApplicationContext(), AddExpense.class)
+            );
             finish();
         });
 
@@ -55,7 +63,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void run() {
                 final int myExpense = myExpenseDao.getAllPrice();
-                txt_getTotal.setText("Total Expense: " + String.valueOf(myExpense));
+                txt_getTotal.setText("Total Expense: " + String.valueOf(myExpense) + " /-");
             }
         }).start();
     }
