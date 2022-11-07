@@ -36,26 +36,17 @@ public class AddExpense extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                date = day + "/" + month + "/"+ year;
+                date = day + " / " + month + " / "+ year;
             }
         });
 
         findViewById(R.id.btn_addExpense).setOnClickListener(view -> {
-            String expenseName = ed_expenseName.getText().toString();
-            int expensePrice = Integer.parseInt(ed_expensePrice.getText().toString());
-            String expenseDescription = ed_expenseDescription.getText().toString();
+            
 
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    final ExpenseModel myExpense = new ExpenseModel();
-                    myExpense.setName(expenseName);
-                    myExpense.setPrice(expensePrice);
-                    myExpense.setDescription(expenseDescription);
-                    myExpense.setDate(date);
-                    myExpenseDao.insertExpense(myExpense);
-                    startActivity(new Intent(getApplicationContext(), Dashboard.class));
-                    finish();
+                    ExpenseModel myExpense = new ExpenseModel();
                 }
             }).start();
 
