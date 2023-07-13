@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -14,6 +15,8 @@ import com.example.expenso.db.MyExpenseDao;
 import com.example.expenso.db.MyExpenseDb;
 import com.example.expenso.model.ExpenseModel;
 import com.example.expenso.util.DatabaseService;
+import com.example.expenso.view.auth.SignIn;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class Dashboard extends AppCompatActivity {
     MyAdapter adapter;
     TextView txt_getTotal;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +40,28 @@ public class Dashboard extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final List<ExpenseModel> myExpenseList = myExpenseDao.getAllExpense();
-                adapter = new MyAdapter(myExpenseList);
-                recyclerView.setAdapter(adapter);
+        try {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    final List<ExpenseModel> myExpenseList = myExpenseDao.getAllExpense();
+                    adapter = new MyAdapter(myExpenseList);
+                    recyclerView.setAdapter(adapter);
 
-            }
-        }).start();
+                }
+            }).start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         findViewById(R.id.btn_add).setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(), AddExpense.class));
+            finish();
+        });
+
+        findViewById(R.id.btn_logout).setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getApplicationContext(), SignIn.class));
             finish();
         });
 

@@ -15,7 +15,7 @@ import com.example.expenso.util.AuthService;
 public class SignIn extends AppCompatActivity {
     EditText logEmail, logPassword;
     Button btnSignIn;
-    TextView txt_newUser;
+    TextView txt_newUser, txtForgotPassword;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -28,6 +28,11 @@ public class SignIn extends AppCompatActivity {
         logPassword = findViewById(R.id.logPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
         txt_newUser = findViewById(R.id.txt_newUser);
+        txtForgotPassword = findViewById(R.id.txtForgotPassword);
+
+        txtForgotPassword.setOnClickListener(v -> {
+            startActivity(new Intent(this, ForgotPassword.class));
+        });
 
         // Handle Click Event
         txt_newUser.setOnClickListener(v -> {
@@ -41,12 +46,12 @@ public class SignIn extends AppCompatActivity {
 
         btnSignIn.setOnClickListener(
                 v -> {
-            String email = logEmail.getText().toString();
-            String password = logPassword.getText().toString();
+                    String email = logEmail.getText().toString();
+                    String password = logPassword.getText().toString();
 
-            new AuthService().signInService(
-                    email, password, v
-            );
-        });
+                    new AuthService().signInService(
+                            email, password, v
+                    );
+                });
     }
 }
